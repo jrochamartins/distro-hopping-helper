@@ -90,10 +90,11 @@ gsettings set org.cinnamon.desktop.keybindings.media-keys screensaver "['<Super>
 gsettings set org.cinnamon window-effect-speed "2"
 gsettings set org.cinnamon.muffin unredirect-fullscreen-windows true
 gsettings set org.cinnamon.desktop.peripherals.mouse accel-profile 'flat'
+gsettings set org.cinnamon.desktop.peripherals.touchpad send-events 'disabled'
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
-## 18. Finishing \n \
+## Finishing \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
 apt update
