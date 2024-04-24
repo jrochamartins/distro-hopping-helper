@@ -109,3 +109,17 @@ echo -e "${C_GREEN}\
 ## Finished! \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
+read -p "Do you want to restart your system now (Y/n)? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    reboot
+fi
+
+# TODO
+# Chromium preferences
+# Remove unused apps
+# Install Nvidia Driver
+# Set local Mint and Ubuntu repositories
+# Configure timeshift
+# install VSCode
+# Increase vm.max_map_count
