@@ -48,12 +48,12 @@ echo -e "${C_YELLOW}\
 ## Install Flatpak applications \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
+flatpak update
 flatpak install flathub net.davidotek.pupgui2 -y
 flatpak install flathub com.discordapp.Discord -y
 flatpak install flathub md.obsidian.Obsidian -y
 flatpak install flathub com.getpostman.Postman -y
 flatpak install flathub com.bitwarden.desktop -y
-flatpak update
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
@@ -106,7 +106,7 @@ sudo apt autoremove --purge hypnotix -y
 sudo apt autoremove --purge pix -y
 sudo apt autoremove --purge rhythmbox -y
 sudo apt autoremove --purge bulky -y
-sudo apt autoremove --purge warpnator -y
+sudo apt autoremove --purge warpinator -y
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
