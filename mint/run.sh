@@ -20,7 +20,7 @@ apt dist-upgrade -y
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
-## Install Deb applications \n \
+## Install applications \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
 apt install numlockx -y
@@ -95,6 +95,21 @@ gsettings set org.cinnamon.desktop.peripherals.touchpad send-events 'disabled'
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
+## Remove unused apps \n \
+----------------------------------------------- \n \
+${C_RESET}"
+sudo apt autoremove --purge firefox -y
+sudo apt autoremove --purge hexchat -y
+sudo apt autoremove --purge thunderbird -y
+sudo apt autoremove --purge celluloid -y
+sudo apt autoremove --purge hypnotix -y
+sudo apt autoremove --purge pix -y
+sudo apt autoremove --purge rhythmbox -y
+sudo apt autoremove --purge bulky -y
+sudo apt autoremove --purge warpnator -y
+
+echo -e "${C_YELLOW}\
+----------------------------------------------- \n \
 ## Finishing \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
@@ -113,8 +128,8 @@ then
 fi
 
 # TODO
-# Chromium preferences
-# Remove unused apps
+# Chromium preferences, copy Preferences to ~/.config/chromium/Default
+
 # Install Nvidia Driver
 # Set local Mint and Ubuntu repositories
 # Configure timeshift
@@ -145,19 +160,6 @@ fi
 # Desativar VBlank no NVidia
 
 #Remover
-#Firefox
-sudo apt autoremove --purge firefox -y
-#Hexchat
-sudo apt autoremove --purge hexchat -y
-#Thunderbir
-sudo apt autoremove --purge thunderbird -y
-#Celuloid
-sudo apt autoremove --purge celluloid -y
-#Hypnotix
-sudo apt autoremove --purge hypnotix -y
-#pix
-sudo apt autoremove --purge pix -y
-sudo apt autoremove --purge rhythmbox -y
-sudo apt autoremove --purge bulky -y
-sudo apt autoremove --purge wapnator -y
+
+
 
