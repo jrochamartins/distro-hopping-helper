@@ -5,9 +5,9 @@ if [ $EUID -ne 0 ]; then
   exit 1
 fi
 
-C_RESET=`tput init`
-C_GREEN=`tput setaf 42`
-C_YELLOW=`tput setaf 220`
+C_RESET=$(tput init)
+C_GREEN=$(tput setaf 42)
+C_YELLOW=$(tput setaf 220)
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
@@ -20,14 +20,43 @@ apt dist-upgrade -y
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
+## Install Prerequisites \n \
+----------------------------------------------- \n \
+${C_RESET}"
+apt install software-properties-common -y
+apt install apt-transport-https -y
+apt install wget -y
+apt install gpg -y
+apt install ca-certificates -y
+apt install gnupg -y
+apt install git -y
+
+echo -e "${C_YELLOW}\
+----------------------------------------------- \n \
+## Add VsCode repository \n \
+----------------------------------------------- \n \
+${C_RESET}"
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor >packages.microsoft.gpg
+install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+
+echo -e "${C_YELLOW}\
+----------------------------------------------- \n \
+## Update caches \n \
+----------------------------------------------- \n \
+${C_RESET}"
+apt update
+
+echo -e "${C_YELLOW}\
+----------------------------------------------- \n \
 ## Install applications \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
 apt install numlockx -y
-apt install chromium -y
-apt install steam:i386 -y
+apt install code -y
+# apt install chromium -y
+# apt install steam:i386 -y
 apt install dconf-editor -y
-apt install git -y
 apt install vlc -y
 
 # echo -e "${C_YELLOW}\
@@ -78,7 +107,7 @@ echo -e "${C_YELLOW}\
 ## Setup user envvar PATH \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-echo "export PATH=\$PATH:$HOME/bin" >> ~/.bashrc
+echo "export PATH=\$PATH:$HOME/bin" >>~/.bashrc
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
@@ -98,15 +127,15 @@ echo -e "${C_YELLOW}\
 ## Remove unused apps \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-sudo apt autoremove --purge firefox -y
-sudo apt autoremove --purge hexchat -y
-sudo apt autoremove --purge thunderbird -y
-sudo apt autoremove --purge celluloid -y
-sudo apt autoremove --purge hypnotix -y
-sudo apt autoremove --purge pix -y
-sudo apt autoremove --purge rhythmbox -y
-sudo apt autoremove --purge bulky -y
-sudo apt autoremove --purge warpinator -y
+apt autoremove --purge firefox -y
+apt autoremove --purge hexchat -y
+apt autoremove --purge thunderbird -y
+apt autoremove --purge celluloid -y
+apt autoremove --purge hypnotix -y
+apt autoremove --purge pix -y
+apt autoremove --purge rhythmbox -y
+apt autoremove --purge bulky -y
+apt autoremove --purge warpinator -y
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
@@ -122,9 +151,8 @@ echo -e "${C_GREEN}\
 ----------------------------------------------- \n \
 ${C_RESET}"
 read -p "Do you want to restart your system now (Y/n)? " -n 1 -r
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    reboot
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  reboot
 fi
 
 # TODO
@@ -158,8 +186,3 @@ fi
 
 # Remover espaços de trabalho
 # Desativar VBlank no NVidia
-
-#Remover
-
-
-
