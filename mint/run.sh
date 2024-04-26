@@ -15,19 +15,20 @@ echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
 ${C_RESET}"
 apt update
-apt upgrade -y && apt dist-upgrade -y
-flatpak update
+apt upgrade -y
+apt dist-upgrade -y
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
 ## Install Deb applications \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-apt-get install -y \
-          numlockx \
-          chromium \
-          steam:i386 \
-          dconf-editor \          
+apt install numlockx -y
+apt install chromium -y
+apt install steam:i386 -y
+apt install dconf-editor -y
+apt install git -y
+apt install vlc -y
 
 # echo -e "${C_YELLOW}\
 # ----------------------------------------------- \n \
@@ -47,12 +48,12 @@ echo -e "${C_YELLOW}\
 ## Install Flatpak applications \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-flatpak install -y flathub \
-          com.getpostman.Postman \
-          com.discordapp.Discord \
-          md.obsidian.Obsidian \
-          org.videolan.VLC \
-          net.davidotek.pupgui2
+flatpak install flathub net.davidotek.pupgui2 -y
+flatpak install flathub com.discordapp.Discord -y
+flatpak install flathub md.obsidian.Obsidian -y
+flatpak install flathub com.getpostman.Postman -y
+flatpak install flathub com.bitwarden.desktop -y
+flatpak update
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
@@ -97,10 +98,6 @@ echo -e "${C_YELLOW}\
 ## Finishing \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-apt update
-apt upgrade -y
-apt dist-upgrade -y
-flatpak update
 apt autoclean
 apt autoremove -y
 
@@ -123,3 +120,44 @@ fi
 # Configure timeshift
 # install VSCode
 # Increase vm.max_map_count
+
+# Gerenciador de atualizações:
+# Mudar para fonte refional repositorios do mint
+# Mudar para fonte refional repositorios do ubuntu
+# Remover repositorio de CD-ROM
+# Configurar para apenas mostrar icone quando hover atualizações
+# Ligar as automações de atualização
+
+# Preferencias
+# Ligar numlock na tela de login
+# Centralizar caixa de login
+
+# Chrome
+# Fixar no painel
+# substituir arquivo de preferencias
+
+# Steam
+# sudo dpkg --add-architecture i386
+# sudo apt install steam-installer -y
+# https://www.linuxcapable.com/how-to-install-steam-on-linux-mint/
+
+# Remover espaços de trabalho
+# Desativar VBlank no NVidia
+
+#Remover
+#Firefox
+sudo apt autoremove --purge firefox -y
+#Hexchat
+sudo apt autoremove --purge hexchat -y
+#Thunderbir
+sudo apt autoremove --purge thunderbird -y
+#Celuloid
+sudo apt autoremove --purge celluloid -y
+#Hypnotix
+sudo apt autoremove --purge hypnotix -y
+#pix
+sudo apt autoremove --purge pix -y
+sudo apt autoremove --purge rhythmbox -y
+sudo apt autoremove --purge bulky -y
+sudo apt autoremove --purge wapnator -y
+
