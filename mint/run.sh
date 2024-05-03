@@ -11,7 +11,7 @@ C_YELLOW=$(tput setaf 220)
 
 echo -e "${C_YELLOW}\
 ----------------------------------------------- \n \
-## Update caches and packages \n \
+## Atualizar cache e pacotes \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
 apt update
@@ -54,10 +54,18 @@ echo -e "${C_YELLOW}\
 ${C_RESET}"
 apt install numlockx -y
 apt install code -y
-# apt install chromium -y
-# apt install steam:i386 -y
+apt install chromium -y
 apt install dconf-editor -y
 apt install vlc -y
+
+echo -e "${C_YELLOW}\
+----------------------------------------------- \n \
+## Install steam \n \
+----------------------------------------------- \n \
+${C_RESET}"
+# https://www.linuxcapable.com/how-to-install-steam-on-linux-mint/
+dpkg --add-architecture i386
+apt install steam-installer -y
 
 # echo -e "${C_YELLOW}\
 # ----------------------------------------------- \n \
@@ -142,7 +150,7 @@ echo -e "${C_YELLOW}\
 ## Finishing \n \
 ----------------------------------------------- \n \
 ${C_RESET}"
-apt autoclean
+apt autoclean -y
 apt autoremove -y
 
 echo -e "${C_GREEN}\
@@ -178,11 +186,6 @@ fi
 # Chrome
 # Fixar no painel
 # substituir arquivo de preferencias
-
-# Steam
-# sudo dpkg --add-architecture i386
-# sudo apt install steam-installer -y
-# https://www.linuxcapable.com/how-to-install-steam-on-linux-mint/
 
 # Remover espaços de trabalho
 # Desativar VBlank no NVidia
